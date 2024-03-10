@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../pages/intersets.dart';
+
 class LogIn extends StatelessWidget {
   static const String routeName = "log_in";
 
@@ -8,9 +10,7 @@ class LogIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery
-        .of(context)
-        .size;
+    var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xffF8FCFF),
       body: Stack(
@@ -114,12 +114,55 @@ class LogIn extends StatelessWidget {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
-
           ),
+          /////////////////////////////////////////////////////////////
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 50, horizontal: 100),
+            margin: EdgeInsets.only(top: 100, bottom: 0, left: 0, right: 0),
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+              ),
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                height: 52,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStatePropertyAll(Color(0xff090c9b)),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Intersets()),
+                    );
+                  },
+                  child: Container(
+                    // button1Dpz (I1:620;10:81)
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Next',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xffffffff),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          /////////////////////////////////////////////////////////////
         ],
 
       ),
