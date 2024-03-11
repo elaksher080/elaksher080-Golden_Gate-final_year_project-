@@ -1,11 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Intersets extends StatelessWidget {
+class Intersets extends StatefulWidget {
   static const String routeName = "intersets";
 
-  const Intersets({super.key});
+  Intersets({super.key});
 
+  @override
+  State<Intersets> createState() => _IntersetsState();
+}
+
+class _IntersetsState extends State<Intersets> {
+////////////////////////////////////////////////
+  final List<String> interests = [
+    'Marketing',
+    'Music',
+    'Health & Fit',
+    'Social Media',
+    'Personal skills',
+    'Design',
+    'Office',
+    'Teaching skills',
+    'IT & Software',
+    'Photography',
+    'Yoga',
+    'Writing',
+    'Meditation',
+  ];
+
+  List<String> selectedInterests = [];
+
+  /////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +93,39 @@ class Intersets extends StatelessWidget {
               ],
             ),
           ),
-          ///////////////////////////////////////
+          ////////////////////////////////////////////////////////////////
+          Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: interests.map((interest) {
+              final isSelected = selectedInterests.contains(interest);
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    if (isSelected) {
+                      selectedInterests.remove(interest);
+                    } else {
+                      selectedInterests.add(interest);
+                    }
+                  });
+                },
+                child: Card(
+                  color: isSelected ? Colors.blue : null,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      interest,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: isSelected ? Colors.white : null,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }).toList(),
+          )
+          ///////////////////////////////////////////////////////////////
         ],
       ),
     );
