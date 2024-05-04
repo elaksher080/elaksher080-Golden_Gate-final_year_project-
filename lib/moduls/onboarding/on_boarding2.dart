@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:golden_gate/moduls/register/login.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../register/sign_up.dart';
 
@@ -12,30 +11,25 @@ class OnBoarding2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       body: Container(
-
           padding: EdgeInsets.fromLTRB(21, 102, 20.06, 8),
           width: double.infinity,
           decoration: BoxDecoration(
             color: Color(0xfff8fcff),
           ),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-
-              children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
                 Container(
                   padding: EdgeInsets.only(
                       top: 10, bottom: 0, left: 0, right: 0),
                   margin: EdgeInsets.fromLTRB(0, 0, 2.94, 0),
                   child: Text(
                     "Learn at your pace. Limitless courses await.  ",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff000000),
-                    ),
-                  ),
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyLarge,
+              ),
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -45,13 +39,9 @@ class OnBoarding2 extends StatelessWidget {
                   ),
                   child: Text(
                     'explore courses that fit your passion and pace. ',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xff000000),
-                    ),
-                  ),
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium,
+              ),
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -108,13 +98,10 @@ class OnBoarding2 extends StatelessWidget {
                           child: Center(
                             child: Text(
                               'Get Started',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.inter(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xffffffff),
-                              ),
-                            ),
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall
+                              ?.copyWith(color: Colors.white),
+                        ),
                           ),
                         ),
                       ),
@@ -142,33 +129,20 @@ class OnBoarding2 extends StatelessWidget {
                         textAlign: TextAlign.center,
                         text:
                         TextSpan(
-                          style: GoogleFonts.inter(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            height: 1.2102272511,
-                            letterSpacing: 1.28,
+                      style: theme.textTheme.bodySmall
+                          ?.copyWith(color: Colors.white),
+                      children: [
+                        TextSpan(
+                          text: 'Already have an account ? ',
+                          style: theme.textTheme.bodySmall?.copyWith(
                             color: Color(0xff6c6c6c),
                           ),
-                          children: [
-                            TextSpan(
-                              text: 'Already have an account ? ',
-                              style: GoogleFonts.inter(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                height: 1.2125,
-                                letterSpacing: 1.28,
-                                color: Color(0xff6c6c6c),
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'Login',
-                              style: GoogleFonts.inter(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 1.28,
-                                color: Color(0xff292929),
-                              ),
-                            ),
+                        ),
+                        TextSpan(
+                          text: 'Login',
+                          style: theme.textTheme.bodySmall
+                              ?.copyWith(fontWeight: FontWeight.w700),
+                        ),
                           ],
                         ),
                       ),
