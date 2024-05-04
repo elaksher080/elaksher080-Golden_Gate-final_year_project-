@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:golden_gate/moduls/onboarding/on_boarding2.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class OnBoarding1 extends StatelessWidget {
   static const String routeName = "on_boarding1";
@@ -9,30 +8,26 @@ class OnBoarding1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       body: Container(
-        // onboarding1VyY (1:617)
+          // onboarding1VyY (1:617)
           padding: EdgeInsets.fromLTRB(21, 102, 20.06, 8),
           width: double.infinity,
           decoration: BoxDecoration(
             color: Color(0xfff8fcff),
           ),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-
-              children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
                 Container(
                   padding: EdgeInsets.only(
                       top: 10, bottom: 0, left: 0, right: 0),
                   margin: EdgeInsets.fromLTRB(0, 0, 2.94, 0),
                   child: Text(
                     "Step forward for your future !",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff000000),
-                    ),
-                  ),
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyLarge,
+              ),
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -42,13 +37,9 @@ class OnBoarding1 extends StatelessWidget {
                   ),
                   child: Text(
                     'Learn new skills for your \n present and your future. ',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xff000000),
-                    ),
-                  ),
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium,
+              ),
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -106,13 +97,10 @@ class OnBoarding1 extends StatelessWidget {
                           child: Center(
                             child: Text(
                               'Next',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.inter(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xffffffff),
-                              ),
-                            ),
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall
+                              ?.copyWith(color: Colors.white),
+                        ),
                           ),
                         ),
                       ),
