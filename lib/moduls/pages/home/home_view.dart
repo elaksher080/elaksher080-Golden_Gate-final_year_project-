@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../register/sign_up.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -10,21 +12,6 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    final List<String> interests = [
-      'Marketing',
-      'Music',
-      'Health & Fit',
-      'Social Media',
-      'Personal skills',
-      'Design',
-      'Office',
-      'Teaching skills',
-      'IT & Software',
-      'Photography',
-      'Yoga',
-      'Writing',
-      'Meditation',
-    ];
     List<String> selectedInterests = [];
     var theme = Theme.of(context);
     return Scaffold(
@@ -80,46 +67,111 @@ class _HomeViewState extends State<HomeView> {
                         color: Color(0xFF090C9B)))),
           ],
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Container(
-            margin: EdgeInsets.only(left: 10, right: 10),
-            child: Wrap(
-              spacing: 8.0,
-              runSpacing: 8.0,
-              children: interests.map((interest) {
-                final isSelected = selectedInterests.contains(interest);
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      if (isSelected) {
-                        selectedInterests.remove(interest);
-                      } else {
-                        selectedInterests.add(interest);
-                      }
-                    });
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25)),
-                    color: isSelected
-                        ? Color(0xFF090C9B).withOpacity(.45)
-                        : Color(0xFFE6E6E6),
-                    child: Padding(
-                      padding: const EdgeInsets.all(9.0),
-                      child: Text(
-                        interest,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w500,
-                          color: isSelected ? Colors.white : Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
+        SizedBox(
+          height: 60,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              GestureDetector(
+                child: carddd(
+                  title: 'Marketing',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: carddd(
+                  title: 'Music',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: carddd(
+                  title: 'Health & Fit',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: carddd(
+                  title: 'Social Media',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: carddd(
+                  title: 'Personal skills',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: carddd(
+                  title: 'Design',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: carddd(
+                  title: 'Office',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: carddd(
+                  title: 'Teaching skills',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+              GestureDetector(
+                child: carddd(
+                  title: 'IT & Software',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SiginUp()),
+                  );
+                },
+              ),
+            ],
           ),
         ),
         Container(
@@ -132,5 +184,50 @@ class _HomeViewState extends State<HomeView> {
         ),
       ]),
     );
+  }
+}
+
+class carddd extends StatelessWidget {
+  const carddd({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      color: Colors.black12,
+      child: Padding(
+        padding: EdgeInsets.all(9.0),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PopularCourses extends StatelessWidget {
+  const PopularCourses({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    throw UnimplementedError();
   }
 }
