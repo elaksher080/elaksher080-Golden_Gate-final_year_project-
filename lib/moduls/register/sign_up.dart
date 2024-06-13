@@ -180,6 +180,7 @@ class SiginUp extends StatelessWidget {
                                     SizedBox(
                                       height: 8,
                                     ),
+                                    ////////
                                     ///////////////////////////////////////////////
                                     _textFieldItem(
                                         isSecure: true,

@@ -6,7 +6,7 @@ class RegisterLoadingState extends AuthState {}
 
 class RegisterFaildState extends AuthState {
   String message;
-
+///m
   RegisterFaildState({required this.message});
 }
 

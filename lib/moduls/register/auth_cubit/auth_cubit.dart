@@ -31,12 +31,12 @@ class AuthCubit extends Cubit<AuthState> {
     });
     var responseBody = jsonDecode(response.body);
     if (responseBody["data"] == null) {
-      print(responseBody);
+      // print(responseBody);
       // faild
       emit(RegisterFaildState(message: responseBody['ERROR...']));
     } else {
       //emit success
       emit(SuccessToRegisterState());
+      ///////
     }
   }
-}
