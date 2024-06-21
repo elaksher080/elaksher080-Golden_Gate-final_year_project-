@@ -83,7 +83,7 @@ class LogIn extends StatelessWidget {
                           content: Container(
                             alignment: Alignment.center,
                             height: 50,
-                            child: Text(state.message),
+                            child: Text(state.msg),
                           ),
                         ));
                       }

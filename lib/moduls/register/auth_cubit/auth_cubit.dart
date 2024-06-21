@@ -42,7 +42,7 @@ class AuthCubit extends Cubit<AuthState> {
     } else {
       //emit faild
       print(responseBody);
-      emit(FailedToRegisterState(message: responseBody['message']));
+      emit(FailedToRegisterState(msg: responseBody['msg']));
       ///////
     }
   }
@@ -64,12 +64,12 @@ class AuthCubit extends Cubit<AuthState> {
           debugPrint("User login succes and his Data is :$data");
           emit(LoginSuccessState());
         } else {
-          debugPrint("Failed to Login, reason is :${data['message']}");
-          emit(FailedToLoginState(message: data['message']));
+          debugPrint("Failed to Login, reason is :${data['msg']}");
+          emit(FailedToLoginState(msg: data['msg']));
         }
       }
     } catch (e) {
-      emit(FailedToLoginState(message: e.toString()));
+      emit(FailedToLoginState(msg: e.toString()));
     }
   }
 }

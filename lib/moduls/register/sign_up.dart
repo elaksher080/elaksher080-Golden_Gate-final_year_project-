@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:golden_gate/moduls/pages/intersets.dart';
+import 'package:golden_gate/moduls/pages/interstes/intersets.dart';
 import 'package:golden_gate/moduls/register/auth_cubit/auth_cubit.dart';
 import 'package:golden_gate/moduls/register/auth_cubit/auth_states.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,7 +37,7 @@ class SiginUp extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                         content: Text(
-                          state.message,
+                          state.msg,
                           style: TextStyle(color: Colors.white),
                         ),
                         backgroundColor: Colors.red,
