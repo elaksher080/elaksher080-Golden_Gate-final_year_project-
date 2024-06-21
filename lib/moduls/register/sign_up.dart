@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:golden_gate/moduls/pages/home/home_view.dart';
+import 'package:golden_gate/moduls/pages/intersets.dart';
 import 'package:golden_gate/moduls/register/auth_cubit/auth_cubit.dart';
 import 'package:golden_gate/moduls/register/auth_cubit/auth_states.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../login/login.dart';
+
 class SiginUp extends StatelessWidget {
-  final nameController = TextEditingController();
+  final firstnameController = TextEditingController();
+  final lastnameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmpasswordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   static const String routeName = "sigin_up";
@@ -23,10 +26,13 @@ class SiginUp extends StatelessWidget {
         create: (context) => AuthCubit(),
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
-            if (state is SuccessToRegisterState) {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const HomeView()));
-            } else if (state is RegisterFaildState) {
+            if (state is RegisterSuccessState) {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Intersets(),
+                  ));
+            } else if (state is FailedToRegisterState) {
               showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
@@ -75,9 +81,9 @@ class SiginUp extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 230,
+                    top: 180,
                     child: Container(
-                      height: 600,
+                      height: 650,
                       width: MediaQuery.of(context).size.width - 40,
                       margin: EdgeInsets.symmetric(horizontal: 20),
                       decoration: BoxDecoration(
@@ -110,54 +116,17 @@ class SiginUp extends StatelessWidget {
                                 key: formKey,
                                 child: Column(
                                   children: [
-                                    // TextField(
-                                    //   decoration: InputDecoration(
-                                    //       prefixIcon: Icon(
-                                    //         Icons.person,
-                                    //       ),
-                                    //       enabledBorder: OutlineInputBorder(
-                                    //         borderSide: BorderSide(
-                                    //             color: Color(0xff6C6C6C)),
-                                    //         borderRadius: BorderRadius.all(
-                                    //             Radius.circular(10)),
-                                    //       ),
-                                    //       ////////////////////////////////////////////////////
-                                    //       focusedBorder: OutlineInputBorder(
-                                    //         borderSide: BorderSide(
-                                    //             color: Color(0xff6C6C6C)),
-                                    //         borderRadius: BorderRadius.all(
-                                    //             Radius.circular(8)),
-                                    //       ),
-                                    //       hintText: "User Name",
-                                    //     ////////////////////////////////////////////////////
-                                    //   ),
-                                    // ),
-                                    // TextFormField(
-                                    //
-                                    //   controller: nameController,
-                                    //             validator: (input)
-                                    //             {
-                                    //
-                                    //     if( nameController.text.isEmpty)
-                                    //       {
-                                    //          return "User name must not be empty";
-                                    //       }
-                                    //     else
-                                    //       {
-                                    //         return null;
-                                    //       }
-                                    //             },
-                                    //             decoration: InputDecoration(
-                                    //               prefixIcon: Icon(
-                                    //                       Icons.person,),
-                                    //               border: OutlineInputBorder(),
-                                    //               hintText: "User Name"
-                                    //             ),
-                                    //
-                                    // ),
                                     _textFieldItem(
-                                        controller: nameController,
-                                        hintText: "User Name",
+                                        controller: firstnameController,
+                                        hintText: "First Name",
+                                        prefixIcon: Icon(Icons.person)),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    /////////////////////////////////////////////
+                                    _textFieldItem(
+                                        controller: lastnameController,
+                                        hintText: "Last Name",
                                         prefixIcon: Icon(Icons.person)),
                                     SizedBox(
                                       height: 8,
@@ -184,12 +153,12 @@ class SiginUp extends StatelessWidget {
                                     ///////////////////////////////////////////////
                                     _textFieldItem(
                                         isSecure: true,
-                                        controller: confirmpasswordController,
+                                        controller: confirmPasswordController,
                                         hintText: "Confirm Password",
                                         prefixIcon:
                                             Icon(Icons.numbers_rounded)),
                                     SizedBox(
-                                      height: 50,
+                                      height: 30,
                                     ),
                                     /////////////////////////////////////////
                                     MaterialButton(
@@ -198,20 +167,21 @@ class SiginUp extends StatelessWidget {
                                           //SGIN UP
                                           BlocProvider.of<AuthCubit>(context)
                                               .register(
-                                                  firstname:
-                                                      nameController.text,
+                                              firstname:
+                                                      firstnameController.text,
+                                                  lastname:
+                                                      lastnameController.text,
                                                   email: emailController.text,
                                                   password:
                                                       passwordController.text,
                                                   confirmpassword:
-                                                      confirmpasswordController
+                                                      confirmPasswordController
                                                           .text);
                                         }
                                       },
-                                      child: Text(
-                                          // state is RegisterLoadingState ? "Loading...."
-                                          // :
-                                          "SIGN UP"),
+                                      child: Text(state is RegisterLoadingState
+                                          ? "Loading...."
+                                          : "SIGN UP"),
                                       color: theme.primaryColor,
                                       textColor: theme.colorScheme.onSecondary,
                                       minWidth: 60,
@@ -221,6 +191,44 @@ class SiginUp extends StatelessWidget {
                                       ),
                                     ),
                                   ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Container(
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LogIn()),
+                                  );
+                                },
+                                style: TextButton.styleFrom(
+                                  padding: EdgeInsets.zero,
+                                ),
+                                child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                    style: theme.textTheme.bodySmall
+                                        ?.copyWith(color: Colors.white),
+                                    children: [
+                                      TextSpan(
+                                        text: 'Already have an account ? ',
+                                        style:
+                                            theme.textTheme.bodySmall?.copyWith(
+                                          color: Color(0xff6c6c6c),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: 'Login',
+                                        style: theme.textTheme.bodySmall
+                                            ?.copyWith(
+                                                fontWeight: FontWeight.w700),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
