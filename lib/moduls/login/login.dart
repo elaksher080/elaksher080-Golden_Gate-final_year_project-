@@ -26,7 +26,7 @@ class LogIn extends StatelessWidget {
             right: 0.0,
             left: 0,
             child: Container(
-              height: 300,
+              height: 310,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/photos/rigester.png"),
@@ -83,7 +83,7 @@ class LogIn extends StatelessWidget {
                           content: Container(
                             alignment: Alignment.center,
                             height: 50,
-                            child: Text(state.message),
+                            child: Text(state.msg),
                           ),
                         ));
                       }
@@ -107,6 +107,12 @@ class LogIn extends StatelessWidget {
                           TextFormField(
                             controller: emailController,
                             decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff6C6C6C)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
                                 hintText: "Email",
                                 hintStyle: theme.textTheme.bodyMedium?.copyWith(
                                   color: Color(0xff6C6C6C),
@@ -128,6 +134,12 @@ class LogIn extends StatelessWidget {
                             controller: passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff6C6C6C)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
                                 hintText: "Password",
                                 hintStyle: theme.textTheme.bodyMedium?.copyWith(
                                   color: Color(0xff6C6C6C),
