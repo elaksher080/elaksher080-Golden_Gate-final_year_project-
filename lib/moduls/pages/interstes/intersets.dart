@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:golden_gate/moduls/pages/HomePage.dart';
+import 'package:golden_gate/moduls/pages/home/HomePage.dart';
 
 class Intersets extends StatefulWidget {
   static const String routeName = "intersets";

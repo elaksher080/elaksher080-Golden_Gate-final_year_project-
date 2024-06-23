@@ -12,6 +12,9 @@ class HomePage extends StatefulWidget {
 
   @override
   State<HomePage> createState() => _HomePageState();
+
+  @override
+  Size get preferredSize => throw UnimplementedError();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -26,6 +29,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -37,9 +41,9 @@ class _HomePageState extends State<HomePage> {
             margin: EdgeInsets.only(left: 10),
             child: Center(
                 child: Image.asset(
-              "assets/icons/logo.png",
-              width: 40,
-            ))),
+                  "assets/icons/logo.png",
+                  width: 40,
+                ))),
         title: Container(
           margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
           padding: EdgeInsets.fromLTRB(13.49, 5, 30, 5),
@@ -77,9 +81,12 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: Image.asset("assets/icons/cart_icon.png",
-                  color: Color(0xff090c9b))),
+            icon: const Icon(
+              Icons.favorite_border_outlined,
+              color: Color(0xff090C9B),
+            ),
+            onPressed: () {},
+          ),
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.menu),
@@ -87,6 +94,34 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      // bottomNavigationBar: GNav(
+      //
+      //   gap: 4,
+      //   tabs: [
+      //     GButton(
+      //       icon: Icons.chat_outlined,hoverColor: Colors.red,
+      //       text: 'Chatbot',
+      //
+      //     ),
+      //     GButton(
+      //       icon: Icons.chat_outlined,
+      //       text: 'Chatbot',
+      //     ),
+      //     GButton(
+      //       icon: Icons.chat_outlined,
+      //       text: 'Chatbot',
+      //     ),
+      //     GButton(
+      //       icon: Icons.chat_outlined,
+      //       text: 'Chatbot',
+      //     ),
+      //     GButton(
+      //       icon: Icons.chat_outlined,
+      //       text: 'Chatbot',
+      //     ),
+      //
+      //   ],
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (int index) {
           setState(() {
@@ -124,7 +159,87 @@ class _HomePageState extends State<HomePage> {
               label: "Account"),
         ],
       ),
+
+      // bottomNavigationBar: Container(
+      //   padding: EdgeInsets.symmetric(horizontal: 16), // Adjust padding as needed
+      //   child: GNav(
+      //     gap: 4,
+      //     tabs: [
+      //       GButton(
+      //         icon: Icons.chat_outlined,
+      //         text: 'Chatbot',
+      //         textStyle: TextStyle(fontSize: 12), // Adjust text size here
+      //       ),
+      //       GButton(
+      //         icon: Icons.chat_outlined,
+      //         text: 'Chatbot',
+      //         textStyle: TextStyle(fontSize: 12), // Adjust text size here
+      //       ),
+      //       GButton(
+      //         icon: Icons.chat_outlined,
+      //         text: 'Chatbot',
+      //         textStyle: TextStyle(fontSize: 12), // Adjust text size here
+      //       ),
+      //       GButton(
+      //         icon: Icons.chat_outlined,
+      //         text: 'Chatbot',
+      //         textStyle: TextStyle(fontSize: 12), // Adjust text size here
+      //       ),
+      //       GButton(
+      //         icon: Icons.chat_outlined,
+      //         text: 'Chatbot',
+      //         textStyle: TextStyle(fontSize: 12), // Adjust text size here
+      //       ),
+      //     ],
+      //   ),
+      // ),
+
       body: screens[selectedIndex],
     );
   }
 }
+// appBar: AppBar(
+//   leading: Padding(
+//     padding: const EdgeInsets.all(8.0),
+//     child: Image.asset('assets/icons/logo.png'),
+//   ),
+//   title: Row(
+//     children: [
+//       Expanded(
+//         child: SizedBox(
+//           height: 35.0,
+//
+//           child: TextField(
+//             decoration: InputDecoration(
+//               hintText: '  Search',
+//               fillColor: Colors.white,
+//               suffixIcon: const Icon(
+//                 Icons.mic,
+//                 color: Color(0xff090C9B),
+//               ),
+//               border: OutlineInputBorder(
+//                 borderRadius: BorderRadius.circular(16.0),
+//               ),
+//               filled: true,
+//               contentPadding: EdgeInsets.zero,
+//             ),
+//           ),
+//         ),
+//       ),
+//     ],
+//   ),
+//   actions: [
+//     IconButton(
+//       icon: const Icon(
+//         Icons.favorite_border_outlined,
+//         color: Color(0xff090C9B),
+//       ),
+//       onPressed: () {},
+//     ),
+//     Padding(
+//       padding:  EdgeInsets.only(left: 0, right: 0),
+//
+//       child: Image.asset('assets/photos/Vector.png'),
+//     ),
+//   ],
+// ),
