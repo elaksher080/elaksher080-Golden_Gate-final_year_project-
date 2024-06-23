@@ -47,199 +47,205 @@ class SiginUp extends StatelessWidget {
           builder: (context, state) {
             return Scaffold(
               backgroundColor: Color(0xffF8FCFF),
-              body: Stack(
-                children: [
-                  Positioned(
-                    top: 0,
-                    right: 0.0,
-                    left: 0.0,
-                    child: Container(
-                      height: 300,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/photos/rigester.png"),
-                          fit: BoxFit.fill,
+              body: SingleChildScrollView(
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 0,
+                      right: 0.0,
+                      left: 0.0,
+                      child: Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/photos/rigester.png"),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 60),
+                              child: RichText(
+                                text: TextSpan(
+                                  text: "Welcome Back!",
+                                  style: GoogleFonts.inter(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 60),
-                            child: RichText(
-                              text: TextSpan(
-                                text: "Welcome Back!",
-                                style: GoogleFonts.inter(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                     ),
-                  ),
-                  Positioned(
-                    top: 180,
-                    child: Container(
-                      height: 650,
-                      width: MediaQuery.of(context).size.width - 40,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              blurRadius: 15,
-                              spreadRadius: 5,
-                            ),
-                          ]),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20),
-                            child: Text(
-                              "SIGN UP",
-                              style: theme.textTheme.bodyMedium?.copyWith(
-                                color: Color(0xff6C6C6C),
-                                fontWeight: FontWeight.w600,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 160),
+                      child: Container(
+                        height: 650,
+                        width: MediaQuery.of(context).size.width - 40,
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 15,
+                                spreadRadius: 5,
                               ),
-                              // color: Color(0xff6C6C6C),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25),
-                            child: Container(
-                              child: Form(
-                                key: formKey,
-                                child: Column(
-                                  children: [
-                                    _textFieldItem(
-                                        controller: firstnameController,
-                                        hintText: "First Name",
-                                        prefixIcon: Icon(Icons.person)),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    /////////////////////////////////////////////
-                                    _textFieldItem(
-                                        controller: lastnameController,
-                                        hintText: "Last Name",
-                                        prefixIcon: Icon(Icons.person)),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    /////////////////////////////////////////////
-                                    _textFieldItem(
-                                        controller: emailController,
-                                        hintText: "E-mail",
-                                        prefixIcon: Icon(Icons.email_outlined)),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    ////////////////////////////////////////////////////////////
-                                    _textFieldItem(
-                                        isSecure: true,
-                                        controller: passwordController,
-                                        hintText: "Password",
-                                        prefixIcon:
-                                            Icon(Icons.numbers_rounded)),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    ////////
-                                    ///////////////////////////////////////////////
-                                    _textFieldItem(
-                                        isSecure: true,
-                                        controller: confirmPasswordController,
-                                        hintText: "Confirm Password",
-                                        prefixIcon:
-                                            Icon(Icons.numbers_rounded)),
-                                    SizedBox(
-                                      height: 30,
-                                    ),
-                                    /////////////////////////////////////////
-                                    MaterialButton(
-                                      onPressed: () {
-                                        if (formKey.currentState!.validate()) {
-                                          //SGIN UP
-                                          BlocProvider.of<AuthCubit>(context)
-                                              .register(
-                                              firstname:
-                                                      firstnameController.text,
-                                                  lastname:
-                                                      lastnameController.text,
-                                                  email: emailController.text,
-                                                  password:
-                                                      passwordController.text,
-                                                  confirmpassword:
-                                                      confirmPasswordController
-                                                          .text);
-                                        }
-                                      },
-                                      child: Text(state is RegisterLoadingState
-                                          ? "Loading...."
-                                          : "SIGN UP"),
-                                      color: theme.primaryColor,
-                                      textColor: theme.colorScheme.onSecondary,
-                                      minWidth: 60,
-                                      height: 60,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    ),
-                                  ],
+                            ]),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: Text(
+                                "SIGN UP",
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: Color(0xff6C6C6C),
+                                  fontWeight: FontWeight.w600,
                                 ),
+                                // color: Color(0xff6C6C6C),
                               ),
                             ),
-                          ),
-                          Center(
-                            child: Container(
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LogIn()),
-                                  );
-                                },
-                                style: TextButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                ),
-                                child: RichText(
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(
-                                    style: theme.textTheme.bodySmall
-                                        ?.copyWith(color: Colors.white),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 25),
+                              child: Container(
+                                child: Form(
+                                  key: formKey,
+                                  child: Column(
                                     children: [
-                                      TextSpan(
-                                        text: 'Already have an account ? ',
-                                        style:
-                                            theme.textTheme.bodySmall?.copyWith(
-                                          color: Color(0xff6c6c6c),
-                                        ),
+                                      _textFieldItem(
+                                          controller: firstnameController,
+                                          hintText: "First Name",
+                                          prefixIcon: Icon(Icons.person)),
+                                      SizedBox(
+                                        height: 8,
                                       ),
-                                      TextSpan(
-                                        text: 'Login',
-                                        style: theme.textTheme.bodySmall
-                                            ?.copyWith(
-                                                fontWeight: FontWeight.w700),
+                                      /////////////////////////////////////////////
+                                      _textFieldItem(
+                                          controller: lastnameController,
+                                          hintText: "Last Name",
+                                          prefixIcon: Icon(Icons.person)),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      /////////////////////////////////////////////
+                                      _textFieldItem(
+                                          controller: emailController,
+                                          hintText: "E-mail",
+                                          prefixIcon:
+                                              Icon(Icons.email_outlined)),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      ////////////////////////////////////////////////////////////
+                                      _textFieldItem(
+                                          isSecure: true,
+                                          controller: passwordController,
+                                          hintText: "Password",
+                                          prefixIcon:
+                                              Icon(Icons.numbers_rounded)),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      ////////
+                                      ///////////////////////////////////////////////
+                                      _textFieldItem(
+                                          isSecure: true,
+                                          controller: confirmPasswordController,
+                                          hintText: "Confirm Password",
+                                          prefixIcon:
+                                              Icon(Icons.numbers_rounded)),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      /////////////////////////////////////////
+                                      MaterialButton(
+                                        onPressed: () {
+                                          if (formKey.currentState!
+                                              .validate()) {
+                                            //SGIN UP
+                                            BlocProvider.of<AuthCubit>(context)
+                                                .register(
+                                                    firstname:
+                                                        firstnameController
+                                                            .text,
+                                                    lastname:
+                                                        lastnameController.text,
+                                                    email: emailController.text,
+                                                    password:
+                                                        passwordController.text,
+                                                    confirmpassword:
+                                                        confirmPasswordController
+                                                            .text);
+                                          }
+                                        },
+                                        child: Text(
+                                            state is RegisterLoadingState
+                                                ? "Loading...."
+                                                : "SIGN UP"),
+                                        color: theme.primaryColor,
+                                        textColor:
+                                            theme.colorScheme.onSecondary,
+                                        minWidth: 60,
+                                        height: 60,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            Center(
+                              child: Container(
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LogIn()),
+                                    );
+                                  },
+                                  style: TextButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                  ),
+                                  child: RichText(
+                                    textAlign: TextAlign.center,
+                                    text: TextSpan(
+                                      style: theme.textTheme.bodySmall
+                                          ?.copyWith(color: Colors.white),
+                                      children: [
+                                        TextSpan(
+                                          text: 'Already have an account ? ',
+                                          style: theme.textTheme.bodySmall
+                                              ?.copyWith(
+                                            color: Color(0xff6c6c6c),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: 'Login',
+                                          style: theme.textTheme.bodySmall
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.w700),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-
-//////////////////////////////////////////////////////////
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },
