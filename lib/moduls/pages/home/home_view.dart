@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:golden_gate/moduls/pages/categories/categories_view.dart';
 
-import '../../register/sign_up.dart';
+import '../categories/Courses_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -21,7 +21,7 @@ class _HomeViewState extends State<HomeView> {
           margin: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
           child: Text(
             "Step forward for your future !",
-            style: theme.textTheme.titleLarge,
+            style: theme.textTheme.titleLarge?.copyWith(fontSize: 24),
           ),
         ),
 
@@ -38,28 +38,22 @@ class _HomeViewState extends State<HomeView> {
           margin: EdgeInsets.only(left: 20, right: 20, top: 20),
           child: Text(
             "Popular courses this month",
-            style: theme.textTheme.bodyLarge,
+            style: theme.textTheme.bodyLarge?.copyWith(fontSize: 20),
           ),
         ),
         Container(
           margin: EdgeInsets.only(left: 20, right: 20, top: 5),
           child: Text(
-              "Empower Yourself\nAccess Our most searched ornline courses today",
-              style: theme.textTheme.bodySmall!
-                  .copyWith(color: Color(0xFF8D979D))),
+            "Empower Yourself Access\nOur most searched ornline courses today",
+            style: theme.textTheme.bodySmall!
+                .copyWith(color: Color(0xFF8D979D), fontSize: 12),
+          ),
         ),
-        // Container(
-        //   margin: EdgeInsets.all(20),
-        //   child: Image.asset(
-        //     "assets/icons/Group 42.png",
-        //     height: 250,
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+
         //////////////////////////////////////////////
         /*Start Slider From Here */
         SizedBox(
-          height: 240,
+          height: 260,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
@@ -71,15 +65,15 @@ class _HomeViewState extends State<HomeView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'assets/photos/slider.png',
+                        'assets/photos/img_1.png',
                         width: 173,
                         height: 104,
                       ),
                       const Text(
-                        'The Complete Python\nBootcamp From Zero\nto Hero in Python',
+                        'Software testing perfect\ncourse From beginner\nto expert',
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
-                          fontSize: 15,
+                          fontSize: 11,
                           decoration: TextDecoration.underline,
                         ),
                       ),
@@ -91,7 +85,7 @@ class _HomeViewState extends State<HomeView> {
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Color(0xff8D979D),
-                          fontSize: 12,
+                          fontSize: 9,
                         ),
                       ),
                       SizedBox(
@@ -102,7 +96,7 @@ class _HomeViewState extends State<HomeView> {
                           const Text(
                             '3.5',
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 8,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -112,7 +106,7 @@ class _HomeViewState extends State<HomeView> {
                           const Text(
                             '(360,712)',
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 9,
                               color: Color(0xff8D979D),
                               fontWeight: FontWeight.w600,
                             ),
@@ -125,7 +119,7 @@ class _HomeViewState extends State<HomeView> {
                             '349 EGP',
                             style: TextStyle(
                               color: Color(0xff090C9B),
-                              fontSize: 20,
+                              fontSize: 12,
                               fontWeight: FontWeight.w700,
                               decoration: TextDecoration.underline,
                             ),
@@ -137,7 +131,7 @@ class _HomeViewState extends State<HomeView> {
                             '400 EGP',
                             style: TextStyle(
                               color: Color(0xff8D979D),
-                              fontSize: 17,
+                              fontSize: 9,
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.lineThrough,
                             ),
@@ -159,7 +153,7 @@ class _HomeViewState extends State<HomeView> {
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   "Categories",
-                  style: theme.textTheme.bodyLarge,
+                  style: theme.textTheme.bodyLarge?.copyWith(fontSize: 20),
                 )),
             GestureDetector(
               onTap: () {
@@ -178,187 +172,175 @@ class _HomeViewState extends State<HomeView> {
             ),
           ],
         ),
-        // SizedBox(
-        //   height: 60,
-        //   child: ListView(
-        //     scrollDirection: Axis.horizontal,
-        //     children: [
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'Marketing',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'Music',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'Health & Fit',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'Social Media',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'Personal skills',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'Design',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'Office',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'Teaching skills',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //       GestureDetector(
-        //         child: carddd(
-        //           title: 'IT & Software',
-        //         ),
-        //         onTap: () {
-        //           Navigator.push(
-        //             context,
-        //             MaterialPageRoute(builder: (context) => SiginUp()),
-        //           );
-        //         },
-        //       ),
-        //     ],
-        //   ),
-        // ),
         SizedBox(
-          height: 50,
+          height: 10,
+        ),
+
+        SizedBox(
+          height: 90,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              GestureDetector(
-                child: CategoryCard(categoryName: 'Marketing'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SiginUp()),
-                  );
-                },
-              ),
-              GestureDetector(
-                child: CategoryCard(categoryName: 'Design'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SiginUp()),
-                  );
-                },
-              ),
-              GestureDetector(
-                child: CategoryCard(categoryName: 'Personal skills'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SiginUp()),
-                  );
-                },
-              ),
-              GestureDetector(
-                child: CategoryCard(categoryName: 'Social Media'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SiginUp()),
-                  );
-                },
-              ),
-              GestureDetector(
-                child: CategoryCard(categoryName: 'Office'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SiginUp()),
-                  );
-                },
-              ),
-              GestureDetector(
-                child: CategoryCard(categoryName: 'Health & Fit'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SiginUp()),
-                  );
-                },
-              ),
-              GestureDetector(
-                child: CategoryCard(categoryName: 'Music'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SiginUp()),
-                  );
-                },
-              ),
+              Column(children: [
+                Row(
+                  children: [
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Personal Development'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Social Media'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Office'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Health & Fit'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Music'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Finance & Accounting'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Office Productivity'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Development'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Business'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Finance & Accounting'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Marketing'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Design'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Personal Skills'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: CategoryCard(categoryName: 'Photography & video'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CoursesView()),
+                        );
+                      },
+                    ),
+                  ],
+                )
+              ]),
             ],
           ),
         ),
+
+        SizedBox(
+          height: 20,
+        ),
         Container(
           color: Colors.grey[300],
-          height: 180,
+          height: 230,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
@@ -475,21 +457,21 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: Container(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: 40.0,
         ),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0xff090C9B)),
-          borderRadius: BorderRadius.circular(16.0),
+          borderRadius: BorderRadius.circular(25.0),
         ),
         child: Center(
           child: Text(
             categoryName,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 14,
+              fontSize: 12,
               color: Color(0xff090C9B),
             ),
           ),

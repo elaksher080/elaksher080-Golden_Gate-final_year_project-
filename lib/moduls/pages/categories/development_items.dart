@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'development_items.dart';
+import 'Courses_view.dart';
 
-class CategoryView extends StatefulWidget {
-  static const String routeName = "category_view";
+class DevelopmentItem extends StatelessWidget {
+  const DevelopmentItem({super.key});
 
-  const CategoryView({super.key});
+  static const String routeName = "development_item";
 
-  @override
-  State<CategoryView> createState() => _CategoryViewState();
-}
-
-class _CategoryViewState extends State<CategoryView> {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -26,7 +21,7 @@ class _CategoryViewState extends State<CategoryView> {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 children: [
-                  Text("Categories ",
+                  Text("Development ",
                       style: theme.textTheme.bodyLarge,
                       textAlign: TextAlign.left),
                 ],
@@ -39,121 +34,101 @@ class _CategoryViewState extends State<CategoryView> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Development",
+                  name: "Web Development",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Business",
+                  name: "Data science",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Finance & Accounting",
+                  name: "Mobile Development",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "IT & Software ",
+                  name: "Programming Languages",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Office Productivity",
+                  name: "Game Development",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Personal Development",
+                  name: "Database Design & \n Development",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Design",
+                  name: "Software testing",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Marketing",
+                  name: "Software Engineering",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Lifestyle",
+                  name: "Software Development\n tools",
                 )),
             GestureDetector(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
+                    MaterialPageRoute(builder: (context) => CoursesView()),
                   );
                 },
                 child: CategoriesCard(
-                  name: "Photography & video",
-                )),
-            GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
-                  );
-                },
-                child: CategoriesCard(
-                  name: "Health & fitness",
-                )),
-            GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DevelopmentItem()),
-                  );
-                },
-                child: CategoriesCard(
-                  name: "Music",
+                  name: "No-Code Development",
                 )),
           ],
         ),
@@ -175,7 +150,7 @@ class CategoriesCard extends StatelessWidget {
       padding: EdgeInsets.only(right: 10, left: 12, bottom: 15),
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 30),
-        height: 50,
+        height: 60,
         width: mediaQuery.width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
