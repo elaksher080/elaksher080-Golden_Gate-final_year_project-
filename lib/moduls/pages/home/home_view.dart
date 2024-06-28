@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:golden_gate/moduls/pages/categories/categories_view.dart';
 
 import '../categories/Courses_view.dart';
+import '../content/over_view_page.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -52,96 +53,104 @@ class _HomeViewState extends State<HomeView> {
 
         //////////////////////////////////////////////
         /*Start Slider From Here */
-        SizedBox(
-          height: 260,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: List.generate(
-              10,
-              (index) {
-                return Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/photos/img_1.png',
-                        width: 173,
-                        height: 104,
-                      ),
-                      const Text(
-                        'Software testing perfect\ncourse From beginner\nto expert',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 11,
-                          decoration: TextDecoration.underline,
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => OverViewPage()),
+            );
+          },
+          child: SizedBox(
+            height: 260,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: List.generate(
+                10,
+                (index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/photos/img_1.png',
+                          width: 173,
+                          height: 104,
                         ),
-                      ),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      const Text(
-                        'Mentor Name',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff8D979D),
-                          fontSize: 9,
+                        const Text(
+                          'Software testing perfect\ncourse From beginner\nto expert',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 11,
+                            decoration: TextDecoration.underline,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 2,
-                      ),
-                      Row(
-                        children: [
-                          const Text(
-                            '3.5',
-                            style: TextStyle(
-                              fontSize: 8,
-                              fontWeight: FontWeight.w600,
+                        SizedBox(
+                          height: 2,
+                        ),
+                        const Text(
+                          'Mentor Name',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff8D979D),
+                            fontSize: 9,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 2,
+                        ),
+                        Row(
+                          children: [
+                            const Text(
+                              '3.5',
+                              style: TextStyle(
+                                fontSize: 8,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 2),
-                          Image.asset('assets/photos/rating.png'),
-                          const SizedBox(width: 2),
-                          const Text(
-                            '(360,712)',
-                            style: TextStyle(
-                              fontSize: 9,
-                              color: Color(0xff8D979D),
-                              fontWeight: FontWeight.w600,
+                            const SizedBox(width: 2),
+                            Image.asset('assets/photos/rating.png'),
+                            const SizedBox(width: 2),
+                            const Text(
+                              '(360,712)',
+                              style: TextStyle(
+                                fontSize: 9,
+                                color: Color(0xff8D979D),
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const Row(
-                        children: [
-                          Text(
-                            '349 EGP',
-                            style: TextStyle(
-                              color: Color(0xff090C9B),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              decoration: TextDecoration.underline,
+                          ],
+                        ),
+                        const Row(
+                          children: [
+                            Text(
+                              '349 EGP',
+                              style: TextStyle(
+                                color: Color(0xff090C9B),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                decoration: TextDecoration.underline,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 7,
-                          ),
-                          Text(
-                            '400 EGP',
-                            style: TextStyle(
-                              color: Color(0xff8D979D),
-                              fontSize: 9,
-                              fontWeight: FontWeight.w600,
-                              decoration: TextDecoration.lineThrough,
+                            SizedBox(
+                              width: 7,
                             ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                );
-              },
+                            Text(
+                              '400 EGP',
+                              style: TextStyle(
+                                color: Color(0xff8D979D),
+                                fontSize: 9,
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ),

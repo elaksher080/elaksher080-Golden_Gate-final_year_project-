@@ -82,7 +82,7 @@ class AcountView extends StatelessWidget {
                           "Edit Profile",
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: Colors.white,
-                            fontSize: 15,
+                            fontSize: 10,
                           ),
                         ),
                       ),
@@ -229,9 +229,9 @@ class AccountCard extends StatelessWidget {
                   ),
                   Text(
                     title,
-                    style: theme.textTheme.titleMedium?.copyWith(
+                    style: theme.textTheme.bodyMedium?.copyWith(
                       color: Color(0xFF6C6C6C),
-                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
                     ),
                   ),
                 ],
@@ -256,11 +256,15 @@ Future<void> _showMyDialog(BuildContext context) async {
     barrierDismissible: false, // user must tap button!
     builder: (context) {
       return AlertDialog(
-        title: const Text('Are you sure ?'),
-        content: const SingleChildScrollView(
+        title: Text(
+          'Are you sure ?',
+          style: theme.textTheme.titleMedium?.copyWith(fontSize: 25),
+        ),
+        content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              Text('you will be logged out of your account'),
+              Text('you will be logged out of your account',
+                  style: theme.textTheme.bodyMedium?.copyWith(fontSize: 20)),
             ],
           ),
         ),
@@ -288,7 +292,7 @@ Future<void> _showMyDialog(BuildContext context) async {
                       "Log out",
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.white,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
                       ),
                     ),
                   ),
@@ -312,7 +316,7 @@ Future<void> _showMyDialog(BuildContext context) async {
                       "Cancel",
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: theme.primaryColor,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
                       ),
                     ),
                   ),
