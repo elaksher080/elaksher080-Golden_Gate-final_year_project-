@@ -578,8 +578,6 @@ class CoursesView extends StatelessWidget {
                 ],
               ),
             ),
-
-            Text("moamen"),
           ],
         ),
       ),
