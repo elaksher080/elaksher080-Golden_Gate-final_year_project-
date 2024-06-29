@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ApplicationTheme {
   static ThemeData lightTheme = ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+    ),
     primaryColor: const Color(0xff090c9b),
     colorScheme: ColorScheme.fromSeed(
       primary: const Color(0xff090c9b),

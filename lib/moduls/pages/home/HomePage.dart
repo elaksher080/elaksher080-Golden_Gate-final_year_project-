@@ -4,8 +4,8 @@ import 'package:golden_gate/moduls/pages/chatbot/chatbot_view.dart';
 import 'package:golden_gate/moduls/pages/home/home_view.dart';
 import 'package:golden_gate/moduls/pages/home/search.dart';
 import 'package:golden_gate/moduls/pages/mycart/mycart_view.dart';
-import 'package:golden_gate/moduls/pages/mycourses/mycourse_view.dart';
 
+import '../account/mycourse_view.dart';
 import '../wishlist/wishlist.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,9 +24,9 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   List<Widget> screens = [
     HomeView(),
-    MyCourseView(),
+    CourseView(),
     MyCartView(),
-    ChatBotView(),
+    ChatScreen(),
     AcountView()
   ];
 

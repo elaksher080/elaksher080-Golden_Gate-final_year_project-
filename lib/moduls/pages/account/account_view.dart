@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:golden_gate/moduls/login/login.dart';
+import 'package:golden_gate/moduls/pages/account/password_view.dart';
+
 import 'package:golden_gate/moduls/pages/home/HomePage.dart';
 
+
 import 'edit_profile.dart';
+import 'email_address_view.dart';
+import 'mycourse_view.dart';
 
 class AcountView extends StatelessWidget {
   const AcountView({super.key});
@@ -82,7 +87,7 @@ class AcountView extends StatelessWidget {
                           "Edit Profile",
                           style: theme.textTheme.bodyMedium?.copyWith(
                             color: Colors.white,
-                            fontSize: 10,
+                            fontSize: 15,
                           ),
                         ),
                       ),
@@ -123,7 +128,7 @@ class AcountView extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => EditProfile()),
+              MaterialPageRoute(builder: (context) => const CourseView()),
             );
           },
           child: AccountCard(
@@ -136,7 +141,7 @@ class AcountView extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => EditProfile()),
+              MaterialPageRoute(builder: (context) => PasswordView()),
             );
           },
           child: AccountCard(
@@ -149,7 +154,7 @@ class AcountView extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => EditProfile()),
+              MaterialPageRoute(builder: (context) => EmailAddressView()),
             );
           },
           child: AccountCard(
@@ -229,9 +234,9 @@ class AccountCard extends StatelessWidget {
                   ),
                   Text(
                     title,
-                    style: theme.textTheme.bodyMedium?.copyWith(
+                    style: theme.textTheme.titleMedium?.copyWith(
                       color: Color(0xFF6C6C6C),
-                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
@@ -256,15 +261,11 @@ Future<void> _showMyDialog(BuildContext context) async {
     barrierDismissible: false, // user must tap button!
     builder: (context) {
       return AlertDialog(
-        title: Text(
-          'Are you sure ?',
-          style: theme.textTheme.titleMedium?.copyWith(fontSize: 25),
-        ),
-        content: SingleChildScrollView(
+        title: const Text('Are you sure ?'),
+        content: const SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              Text('you will be logged out of your account',
-                  style: theme.textTheme.bodyMedium?.copyWith(fontSize: 20)),
+              Text('you will be logged out of your account'),
             ],
           ),
         ),
@@ -276,7 +277,7 @@ Future<void> _showMyDialog(BuildContext context) async {
                 onTap: () {
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) => LogIn()),
-                      (Route<dynamic> route) => false);
+                          (Route<dynamic> route) => false);
                 },
                 child: Container(
                   width: 120,
@@ -292,7 +293,7 @@ Future<void> _showMyDialog(BuildContext context) async {
                       "Log out",
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: Colors.white,
-                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
@@ -316,7 +317,7 @@ Future<void> _showMyDialog(BuildContext context) async {
                       "Cancel",
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: theme.primaryColor,
-                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
