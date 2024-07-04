@@ -1,4 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:golden_gate/moduls/pages/categories/state%20(2).dart';
+
+import 'cubit.dart';
 
 class CoursesView extends StatelessWidget {
   const CoursesView({super.key});
@@ -28,7 +34,7 @@ class CoursesView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 4,
             ),
             Padding(
@@ -41,7 +47,7 @@ class CoursesView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             /////////////////////////////
@@ -57,115 +63,111 @@ class CoursesView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             //////////////////////////////////////////////
             /*Start Slider From Here */
-            SizedBox(
-              height: 260,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: List.generate(
-                  10,
-                  (index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/photos/img_3.png',
-                            width: 173,
-                            height: 104,
-                          ),
-                          const Text(
-                            'Mobile development \n perfect course learn\n dart  and flutter from\n zero to hero',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 11,
-                              decoration: TextDecoration.underline,
+      SizedBox(
+        height: 200,
+        child: BlocProvider(
+          create: (context) => GetPopularCoursesCubit()..getPopularCourses(),
+          child: BlocBuilder<GetPopularCoursesCubit, GetPopularCoursesState>(
+            builder: (BuildContext context, GetPopularCoursesState state) {
+              if (state is GetPopularCoursesLoading) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (state is GetPopularCoursesSuccess) {
+                final courses = state.response;
+                return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: courses.data?.length ?? 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    return AspectRatio(
+                      aspectRatio: 2 / 3,
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: courses.data?[index].thumbnail?.url ?? '',
+                              width: 173,
+                              height: 104,
+                              fit: BoxFit.cover,
+                              errorWidget: (context, url, error) => Image.asset(
+                                'assets/photos/img.png',
+                                width: 173,
+                                height: 104,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                          const Text(
-                            'Mentor Name',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff8D979D),
-                              fontSize: 9,
+                            const SizedBox(height: 4),
+                            Text(
+                              courses.data?[index].title ??'',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 11,
+                                decoration: TextDecoration.underline,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                '3.5',
-                                style: TextStyle(
-                                  fontSize: 8,
-                                  fontWeight: FontWeight.w600,
+                            const SizedBox(height: 2),
+                            Text(
+                              courses.data?[index].instructor??'Mentor Name',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff8D979D),
+                                fontSize: 9,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Row(
+                              children: [
+                                Text(
+                                  '${courses.data?[index].avgRatings ??3.5}',
+                                  style: const TextStyle(
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 2),
-                              Image.asset('assets/photos/rating.png'),
-                              const SizedBox(width: 2),
-                              const Text(
-                                '(360,712)',
-                                style: TextStyle(
-                                  fontSize: 9,
-                                  color: Color(0xff8D979D),
-                                  fontWeight: FontWeight.w600,
+                                const SizedBox(width: 2),
+                                Image.asset('assets/photos/rating.png'),
+                                const SizedBox(width: 2),
+                                const Text(
+                                  '(360,712)',
+                                  style: TextStyle(
+                                    fontSize: 9,
+                                    color: Color(0xff8D979D),
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const Row(
-                            children: [
-                              Text(
-                                '349 EGP',
-                                style: TextStyle(
-                                  color: Color(0xff090C9B),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  decoration: TextDecoration.underline,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 7,
-                              ),
-                              Text(
-                                '400 EGP',
-                                style: TextStyle(
-                                  color: Color(0xff8D979D),
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w600,
-                                  decoration: TextDecoration.lineThrough,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
+                              ],
+                            ),
+                          
+                          ],
+                        ),
                       ),
                     );
                   },
-                ),
-              ),
-            ),
-            SizedBox(
+                );
+              } else {
+                return const Center(child: Text('Failed to load courses'));
+              }
+            },
+          ),
+        ),
+      ),
+
+
+      const SizedBox(
               height: 20,
             ),
             //////////////////////////////////////////////
             Container(
-              margin: EdgeInsets.only(bottom: 20),
               height: 2.0,
               // Height of the horizontal line
               width: double.infinity,
               // Width of the line, stretching to the edges of the parent
-              color: Color(0xFFDBDBDB), // Color of the line
+              color: const Color(0xFFDBDBDB), // Color of the line
             ),
             /////////////////////////////
             Padding(
@@ -180,7 +182,7 @@ class CoursesView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             //////////////////////////////////////////////
@@ -210,7 +212,7 @@ class CoursesView extends StatelessWidget {
                               decoration: TextDecoration.underline,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
                           const Text(
@@ -221,7 +223,7 @@ class CoursesView extends StatelessWidget {
                               fontSize: 9,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
                           Row(
@@ -280,12 +282,12 @@ class CoursesView extends StatelessWidget {
             ),
             //////////////////////////////////////////////
             Container(
-              margin: EdgeInsets.only(bottom: 20),
+              margin: const EdgeInsets.only(bottom: 20),
               height: 2.0,
               // Height of the horizontal line
               width: double.infinity,
               // Width of the line, stretching to the edges of the parent
-              color: Color(0xFFDBDBDB), // Color of the line
+              color: const Color(0xFFDBDBDB), // Color of the line
             ),
             /////////////////////////////
             Padding(
@@ -300,7 +302,7 @@ class CoursesView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             //////////////////////////////////////////////
@@ -311,26 +313,26 @@ class CoursesView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 children: List.generate(
                   10,
-                  (index) {
+                      (index) {
                     return Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/photos/img.png',
+                            'assets/photos/img_1.png',
                             width: 173,
                             height: 104,
                           ),
                           const Text(
-                            'The Complete Web \n Development Course \n From  Zero to Hero',
+                            'Software testing perfect\ncourse From beginner\nto expert',
                             style: TextStyle(
                               fontWeight: FontWeight.w800,
                               fontSize: 11,
                               decoration: TextDecoration.underline,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
                           const Text(
@@ -341,7 +343,7 @@ class CoursesView extends StatelessWidget {
                               fontSize: 9,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
                           Row(
@@ -400,12 +402,12 @@ class CoursesView extends StatelessWidget {
             ),
             //////////////////////////////////////////////
             Container(
-              margin: EdgeInsets.only(bottom: 20),
+              margin: const EdgeInsets.only(bottom: 20),
               height: 2.0,
               // Height of the horizontal line
               width: double.infinity,
               // Width of the line, stretching to the edges of the parent
-              color: Color(0xFFDBDBDB), // Color of the line
+              color: const Color(0xFFDBDBDB), // Color of the line
             ),
 
             Padding(
@@ -420,7 +422,7 @@ class CoursesView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
 
@@ -432,144 +434,144 @@ class CoursesView extends StatelessWidget {
                   Column(children: [
                     Row(children: [
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Python'),
+                        child: const CategoryCard(categoryName: 'Python'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Angular'),
+                        child: const CategoryCard(categoryName: 'Angular'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'ReactJS'),
+                        child: const CategoryCard(categoryName: 'ReactJS'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'C++ '),
+                        child: const CategoryCard(categoryName: 'C++ '),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Next.JS'),
+                        child: const CategoryCard(categoryName: 'Next.JS'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'JavaScript'),
+                        child: const CategoryCard(categoryName: 'JavaScript'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Java'),
+                        child: const CategoryCard(categoryName: 'Java'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                     ]),
                     Row(children: [
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'PHP'),
+                        child: const CategoryCard(categoryName: 'PHP'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Security'),
+                        child: const CategoryCard(categoryName: 'Security'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Dart'),
+                        child: const CategoryCard(categoryName: 'Dart'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Flutter'),
+                        child: const CategoryCard(categoryName: 'Flutter'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Android'),
+                        child: const CategoryCard(categoryName: 'Android'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'Swift'),
+                        child: const CategoryCard(categoryName: 'Swift'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
                       GestureDetector(
-                        child: CategoryCard(categoryName: 'AI'),
+                        child: const CategoryCard(categoryName: 'AI'),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CoursesView()),
+                                builder: (context) => const CoursesView()),
                           );
                         },
                       ),
@@ -578,6 +580,8 @@ class CoursesView extends StatelessWidget {
                 ],
               ),
             ),
+
+            const Text("moamen"),
           ],
         ),
       ),

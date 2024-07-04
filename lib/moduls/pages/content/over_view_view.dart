@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class OverViewView extends StatelessWidget {
-  const OverViewView({super.key});
-
+  const OverViewView({super.key, required this.desc, required this.supTitle, required this.language, required this.instructor, required this.duration, required this.level});
+  final String desc;
+  final String supTitle;
+  final String language;
+  final String instructor;
+  final int duration;
+  final String level;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -32,7 +37,7 @@ class OverViewView extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      'instructor name',
+                      instructor,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: const Color(0xFF6A7176),
                           fontSize: 18,
@@ -46,7 +51,7 @@ class OverViewView extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
-                  'some important information about this course: what the student need to know and will learn in the course',
+                  supTitle,
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ],
@@ -71,19 +76,22 @@ class OverViewView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Skill level: All levels',
+                          'Skill level:$level',
                           style: Theme.of(context).textTheme.titleSmall,
                           overflow: TextOverflow.ellipsis,
+
                         ),
                         Text(
                           'Students: 25',
                           style: Theme.of(context).textTheme.titleSmall,
                           overflow: TextOverflow.ellipsis,
+
                         ),
                         Text(
                           'Lectures: 100 ',
                           style: Theme.of(context).textTheme.titleSmall,
                           overflow: TextOverflow.ellipsis,
+
                         ),
                       ],
                     ),
@@ -91,19 +99,22 @@ class OverViewView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Languages: English ',
+                          'Languages: $language',
                           style: Theme.of(context).textTheme.titleSmall,
                           overflow: TextOverflow.ellipsis,
+
                         ),
                         Text(
                           ' Captions: yes',
                           style: Theme.of(context).textTheme.titleSmall,
                           overflow: TextOverflow.ellipsis,
+
                         ),
                         Text(
-                          'Total hours:  15 hours',
+                          'Total hours:  $duration hours',
                           style: Theme.of(context).textTheme.titleSmall,
                           overflow: TextOverflow.ellipsis,
+
                         ),
                       ],
                     ),
@@ -124,7 +135,10 @@ class OverViewView extends StatelessWidget {
                 ),
                 Text(
                   'Available on .............',
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ,
                 ),
               ],
             ),
@@ -140,8 +154,11 @@ class OverViewView extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
-                  'description in details of the course and what he is doing in the course and every video .description in details of the course and',
-                  style: Theme.of(context).textTheme.titleSmall,
+                  desc,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ,
                 ),
               ],
             ),

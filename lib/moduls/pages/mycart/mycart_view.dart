@@ -10,86 +10,84 @@ class MyCartView extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
-
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
               Container(
-                  alignment: Alignment.topLeft,
-                  child: Text("My Cart",
-                style: theme.textTheme.titleLarge?.copyWith(
-
-                  fontSize: 30,
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "My Cart",
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontSize: 30,
+                  ),
                 ),
-              )
               ),
-
-                SizedBox(height: 35,),
+              SizedBox(height: 35,),
               ListView(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  CartItem(onSelected:(bool? value) {  }, isSelected:true  ,),
-                  CartItem(isSelected:false, onSelected: (bool? value) {  },),
-                  CartItem(onSelected:(bool? value) {  }, isSelected:false  ,),
-                  CartItem(isSelected:false, onSelected: (bool? value) {  },),
-                  CartItem(onSelected:(bool? value) {  }, isSelected:true  ,),
-                  CartItem(isSelected:true, onSelected: (bool? value) {  },),
+                  CartItem(),
+                  CartItem(),
+                  CartItem(),
+                  CartItem(),
+                  CartItem(),
+                  CartItem(),
                 ],
               ),
-
               SizedBox(height: 50,),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Row(
                   children: [
-                        Expanded(
-
-                          child: TextFormField(
-                            cursorHeight: 30,
-                            style: theme.textTheme.bodyMedium,
-
-                            decoration: InputDecoration(
-
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  borderSide:
-                                BorderSide(color:Color(0xFFB6A168),
-
-                                ),
-                                ),
-                                prefixIcon: Icon(Icons.local_offer_outlined,
-                                  color: Color(0xFFB6A168),
-                                  size: 28,),
-                            ),
+                    Expanded(
+                      child: TextFormField(
+                        cursorHeight: 30,
+                        style: theme.textTheme.bodyMedium,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                            borderSide: BorderSide(color: Color(0xFFB6A168)),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.local_offer_outlined,
+                            color: Color(0xFFB6A168),
+                            size: 28,
                           ),
                         ),
-                              SizedBox(width: 8,),
+                      ),
+                    ),
+                    SizedBox(width: 8,),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => MyCartView()),
                         );
                       },
                       child: Container(
-
                         width: 100,
                         height: 45,
                         decoration: BoxDecoration(
                           color: Color(0xFFB6A168),
                           borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color:Color(0xFFB6A168),
-                              style:BorderStyle.solid ),
+                          border: Border.all(
+                            color: Color(0xFFB6A168),
+                            style: BorderStyle.solid,
+                          ),
                         ),
-                           child: Center(
-                             child: Text("Apply",
-                               style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w800),
-
-                             ),
-                           ),
+                        child: Center(
+                          child: Text(
+                            "Apply",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -121,10 +119,13 @@ class MyCartView extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => CheckOut()),
                     );
                   },
-                  child: Text('Check Out',style: theme.textTheme.titleSmall?.copyWith(
-                    color: Colors.white,
-                  fontSize: 20,
-                  ),),
+                  child: Text(
+                    'Check Out',
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
                 style: ElevatedButton.styleFrom(
                   primary: Color(0xff090C9B),
@@ -139,11 +140,13 @@ class MyCartView extends StatelessWidget {
   }
 }
 
-class CartItem extends StatelessWidget {
-  final bool isSelected;
-  final ValueChanged<bool?> onSelected;
+class CartItem extends StatefulWidget {
+  @override
+  State<CartItem> createState() => _CartItemState();
+}
 
-  CartItem({required this.isSelected, required this.onSelected});
+class _CartItemState extends State<CartItem> {
+  bool _isSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -155,41 +158,47 @@ class CartItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: CheckboxListTile(
-        value: isSelected,
-        onChanged: onSelected,
-        title: Text('The name of the course',style: theme.textTheme.bodyLarge?.
-        copyWith(
-          fontSize: 20
-        ),),
+        value: _isSelected,
+        onChanged: (bool? value) {
+          setState(() {
+            _isSelected = value ?? false;
+          });
+        },
+        title: Text(
+          'The name of the course',
+          style: theme.textTheme.bodyLarge?.copyWith(
+            fontSize: 20,
+          ),
+        ),
         subtitle: Column(
-
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Padding(
-              padding: const EdgeInsets.only(left: 0,right: 110),
-              child: Text('Mentor Name',style: theme.textTheme.bodyMedium?.
-              copyWith(
+              padding: const EdgeInsets.only(left: 0, right: 110),
+              child: Text(
+                'Mentor Name',
+                style: theme.textTheme.bodyMedium?.copyWith(
                   fontSize: 14,
-                color: Colors.grey
-              ),
+                  color: Colors.grey,
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 0,right: 110),
-              child: Text('459 EGP',style: theme.textTheme.bodyMedium?.
-              copyWith(
-                  fontSize: 18
-              ),),
+              padding: const EdgeInsets.only(left: 0, right: 110),
+              child: Text(
+                '459 EGP',
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  fontSize: 18,
+                ),
+              ),
             ),
           ],
         ),
-
         secondary: Image.asset('assets/photos/Group 16.png'),
       ),
     );
   }
 }
-
 
 class SummaryRow extends StatelessWidget {
   final String label;
@@ -207,11 +216,15 @@ class SummaryRow extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(fontWeight: isBold ? FontWeight.bold : FontWeight.normal),
+            style: TextStyle(
+              fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
           Text(
             amount,
-            style: TextStyle(fontWeight: isBold ? FontWeight.bold : FontWeight.normal),
+            style: TextStyle(
+              fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+            ),
           ),
         ],
       ),

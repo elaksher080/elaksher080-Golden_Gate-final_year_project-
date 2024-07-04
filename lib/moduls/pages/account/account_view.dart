@@ -1,16 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:golden_gate/moduls/login/login.dart';
 import 'package:golden_gate/moduls/pages/account/password_view.dart';
-
 import 'package:golden_gate/moduls/pages/home/HomePage.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:io';
 
 import 'edit_profile.dart';
 import 'email_address_view.dart';
 import 'mycourse_view.dart';
 
-class AcountView extends StatelessWidget {
+class AcountView extends StatefulWidget {
   const AcountView({super.key});
+
+  @override
+  _AcountViewState createState() => _AcountViewState();
+}
+
+class _AcountViewState extends State<AcountView> {
+  File? _image;
+  final String _imageKey = 'profile_image';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadImage();
+  }
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+      _saveImage(pickedFile.path);
+    }
+  }
+
+  Future<void> _saveImage(String path) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_imageKey, path);
+  }
+
+  Future<void> _loadImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final imagePath = prefs.getString(_imageKey);
+    if (imagePath != null) {
+      setState(() {
+        _image = File(imagePath);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,13 +140,27 @@ class AcountView extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Stack(
                 children: [
-                  Container(
-                    child: Image.asset(
-                      "assets/icons/person.png",
-                      height: 100,
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: _image == null
+                        ? AssetImage("assets/icons/person.png")
+                        : FileImage(_image!) as ImageProvider,
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: GestureDetector(
+                      onTap: _pickImage,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 20,
+                        child: IconButton(
+                          icon: Icon(Icons.camera_alt_outlined, color: Color(0xFF090C9B)),
+                          onPressed: _pickImage,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -128,7 +184,7 @@ class AcountView extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CourseView()),
+              MaterialPageRoute(builder: (context) => const MyCourseView()),
             );
           },
           child: AccountCard(

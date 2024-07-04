@@ -18,50 +18,55 @@ class ContentView extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 25, // Specify the number of items
+                itemCount: 25,
                 itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 5,
-                          child: RichText(
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                              style: theme.textTheme.bodySmall
-                                  ?.copyWith(color: Colors.black), // Changed to black for better visibility
-                              children: [
-                                TextSpan(
-                                  text: 'Section ${index + 1}: ',
-                                  style: theme.textTheme.titleMedium?.copyWith(
-                                   fontSize: 17,
-                                  ),
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 5,
+                              child: RichText(
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: theme.textTheme.bodySmall
+                                      ?.copyWith(color: Colors.black),
+                                  children: [
+                                    TextSpan(
+                                      text: 'Section ${index + 1}: ',
+                                      style: theme.textTheme.titleMedium?.copyWith(
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                      'the name of the first video of the section .',
+                                      style: theme.textTheme.bodyMedium
+                                          ?.copyWith(fontSize: 15),
+                                    ),
+                                  ],
                                 ),
-                                TextSpan(
-                                  text:
-                                  'the name of the first video of the section .',
-                                  style: theme.textTheme.bodyMedium
-                                      ?.copyWith(fontSize: 15),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Icon(Icons.video_library_outlined),
-                              Text(
-                                " 42min",
-                                style: theme.textTheme.bodySmall ?.copyWith(fontSize: 10),
                               ),
-                            ],
-                          ),
+                            ),
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  Icon(Icons.video_library_outlined),
+                                  Text(
+                                    " 42min",
+                                    style: theme.textTheme.bodySmall ?.copyWith(fontSize: 10),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Divider(),
+                    ],
                   );
                 },
               ),
