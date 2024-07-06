@@ -222,7 +222,7 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
         const SizedBox(
-          height: 10,
+          height: 5,
         ),
         SizedBox(
           height: 90,

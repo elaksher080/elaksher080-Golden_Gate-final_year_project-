@@ -7,6 +7,7 @@ class Wishlist extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Wishlist'),
@@ -29,10 +30,11 @@ class Wishlist extends StatelessWidget {
 class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.only(bottom: 16.0),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.blue),
+        border: Border.all(color: Color(0xFF090C9B)),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Padding(
@@ -63,7 +65,8 @@ class CourseCard extends StatelessWidget {
                   Text(
                     '459 EGP',
                     style: TextStyle(
-                      color: Colors.green,
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
                     ),
                   ),
                   SizedBox(height: 8.0),
@@ -73,9 +76,8 @@ class CourseCard extends StatelessWidget {
                       onTap: () {},
                       child: Text(
                         'Add to Cart',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
+                        style: theme.textTheme.bodySmall?.copyWith(decoration: TextDecoration.underline,
+                            color: Color(0xFF090C9B),
                         ),
                       ),
                     ),

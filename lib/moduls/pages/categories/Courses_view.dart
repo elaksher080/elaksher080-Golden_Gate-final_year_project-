@@ -614,14 +614,14 @@ class CategoryCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         height: 40,
-        width: 120,
+        width: 150,
         // padding: const EdgeInsets.symmetric(
         //   horizontal: 40.0,
         //
         // ),
         decoration: BoxDecoration(
           border: Border.all(color: const Color(0xff090C9B)),
-          borderRadius: BorderRadius.circular(2),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Center(
           child: Text(
