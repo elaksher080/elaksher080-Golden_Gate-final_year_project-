@@ -242,44 +242,7 @@ class LogIn extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Center(
-                              child: Container(
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AcountView()),
-                                    );
-                                  },
-                                  style: TextButton.styleFrom(
-                                    padding: EdgeInsets.zero,
-                                  ),
-                                  child: RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(
-                                      style: theme.textTheme.bodySmall
-                                          ?.copyWith(color: Colors.white),
-                                      children: [
-                                        TextSpan(
-                                          text: 'go ',
-                                          style: theme.textTheme.bodySmall
-                                              ?.copyWith(
-                                            color: Color(0xff6c6c6c),
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: 'account',
-                                          style: theme.textTheme.bodySmall
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.w700),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+
                           ],
                         );
                       },
