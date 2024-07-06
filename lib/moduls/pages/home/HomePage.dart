@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   List<Widget> screens = [
     HomeView(),
-    CourseView(),
+    MyCourseView(),
     MyCartView(),
     ChatScreen(),
     AcountView()
