@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:golden_gate/moduls/pages/home/HomePage.dart';
+import 'package:golden_gate/moduls/pages/home/home_view.dart';
 
 class CheckOut extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -30,11 +32,11 @@ class CheckOut extends StatelessWidget {
                   'Payment method',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 20),
                 _buildTextFormField('E-mail address', 'E-mail address'),
-                SizedBox(height: 16),
+                SizedBox(height: 20),
                 _buildTextFormField('Card Number', '0000/0000/0000/0000'),
-                SizedBox(height: 16),
+                SizedBox(height: 20),
                 Row(
                   children: [
                     Expanded(
@@ -46,7 +48,7 @@ class CheckOut extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 20),
                 _buildTextFormField('Cardholder name', 'Cardholder name'),
                 SizedBox(height: 32),
                 Center(
@@ -57,15 +59,19 @@ class CheckOut extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Success'),
-                              content: Text('The operation was completed successfully.'),
+                              title: Text('Success',style: TextStyle(color: Color(0xFF090C9B)),),
+                              content: Text('The operation was completed successfully.',
+                                style: TextStyle(fontWeight: FontWeight.w200),),
                               actions: <Widget>[
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
-                                    Navigator.pushReplacementNamed(context, '/nextPage'); // Replace '/nextPage' with your target route name
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(builder: (context) =>HomePage()),
+                                    );// Replace '/nextPage' with your target route name
                                   },
-                                  child: Text('OK'),
+                                  child: Text('OK',style: TextStyle(fontSize: 25),),
                                 ),
                               ],
                             );
@@ -74,14 +80,15 @@ class CheckOut extends StatelessWidget {
                       }
                     },
                     child: Container(
+
                       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
                       decoration: BoxDecoration(
-                        color: Colors.brown, // You can change the color to match the image
-                        borderRadius: BorderRadius.circular(8),
+                        color: Color(0xFFB6A168), // You can change the color to match the image
+                        borderRadius: BorderRadius.circular(25),
                       ),
                       child: Text(
                         'Confirm & Continue',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

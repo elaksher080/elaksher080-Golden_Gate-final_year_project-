@@ -7,9 +7,9 @@ class RegisterLoadingState extends AuthState {}
 class RegisterSuccessState extends AuthState {}
 
 class FailedToRegisterState extends AuthState {
-  String msg;
+  String message;
 
-  FailedToRegisterState({required this.msg});
+  FailedToRegisterState({required this.message});
 }
 
 class LoginLoadingState extends AuthState {}
@@ -17,7 +17,7 @@ class LoginLoadingState extends AuthState {}
 class LoginSuccessState extends AuthState {}
 
 class FailedToLoginState extends AuthState {
-  final String msg;
+  final String message;
 
-  FailedToLoginState({required this.msg});
+  FailedToLoginState({required this.message});
 }

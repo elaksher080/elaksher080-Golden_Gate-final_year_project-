@@ -29,14 +29,22 @@ class MyCartView extends StatelessWidget {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  CartItem(),
-                  CartItem(),
-                  CartItem(),
-                  CartItem(),
-                  CartItem(),
-                  CartItem(),
+                  CartItem(
+                    title: 'Flutter&Dart (The Complete Guide)',
+                    subtitle1: 'Hossam Mostafa',
+                    subtitle2: '459 EGP',
+                    imagePath: 'assets/photos/Group 16.png',
+                  ),
+                  CartItem(
+                    title: 'Machine Learning A-Z course',
+                    subtitle1: 'Mostafa Mohamed',
+                    subtitle2: '559 EGP',
+                    imagePath: 'assets/photos/Group 16.png',
+                  ),
+                  // Add more CartItem instances with different values as needed
                 ],
               ),
+
               SizedBox(height: 50,),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -141,6 +149,18 @@ class MyCartView extends StatelessWidget {
 }
 
 class CartItem extends StatefulWidget {
+  final String title;
+  final String subtitle1;
+  final String subtitle2;
+  final String imagePath;
+
+  CartItem({
+    required this.title,
+    required this.subtitle1,
+    required this.subtitle2,
+    required this.imagePath,
+  });
+
   @override
   State<CartItem> createState() => _CartItemState();
 }
@@ -165,7 +185,7 @@ class _CartItemState extends State<CartItem> {
           });
         },
         title: Text(
-          'The name of the course',
+          widget.title,
           style: theme.textTheme.bodyLarge?.copyWith(
             fontSize: 20,
           ),
@@ -176,7 +196,7 @@ class _CartItemState extends State<CartItem> {
             Padding(
               padding: const EdgeInsets.only(left: 0, right: 110),
               child: Text(
-                'Mentor Name',
+                widget.subtitle1,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   fontSize: 14,
                   color: Colors.grey,
@@ -186,7 +206,7 @@ class _CartItemState extends State<CartItem> {
             Padding(
               padding: const EdgeInsets.only(left: 0, right: 110),
               child: Text(
-                '459 EGP',
+                widget.subtitle2,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   fontSize: 18,
                 ),
@@ -194,11 +214,12 @@ class _CartItemState extends State<CartItem> {
             ),
           ],
         ),
-        secondary: Image.asset('assets/photos/Group 16.png'),
+        secondary: Image.asset(widget.imagePath),
       ),
     );
   }
 }
+
 
 class SummaryRow extends StatelessWidget {
   final String label;

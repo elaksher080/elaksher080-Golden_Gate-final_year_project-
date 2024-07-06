@@ -33,13 +33,15 @@ class EmailAddressView extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 30,
+
               decoration: BoxDecoration(
                     border: Border.all(color: const Color(0xFF090C9B)),
+
               ),
                child: Padding(
-                 padding: const EdgeInsets.all(16.0),
+                 padding: const EdgeInsets.only(left: 8.0),
                  child: const Text(
-                   'email of the user ',
+                   'moutaz789@gmail.com',style: TextStyle(fontSize: 20 ,fontWeight: FontWeight.w500),
                  ),
                ),
 

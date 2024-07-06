@@ -6,6 +6,7 @@ import 'package:golden_gate/moduls/register/auth_cubit/auth_states.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../login/login.dart';
+import '../pages/home/HomePage.dart';
 
 class SiginUp extends StatelessWidget {
   final firstnameController = TextEditingController();
@@ -30,14 +31,14 @@ class SiginUp extends StatelessWidget {
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Intersets(),
+                    builder: (context) =>Intersets(),
                   ));
             } else if (state is FailedToRegisterState) {
               showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
                         content: Text(
-                          state.msg,
+                          state.message,
                           style: TextStyle(color: Colors.white),
                         ),
                         backgroundColor: Colors.red,
@@ -183,10 +184,19 @@ class SiginUp extends StatelessWidget {
                                                             .text);
                                           }
                                         },
-                                        child: Text(
-                                            state is RegisterLoadingState
-                                                ? "Loading...."
-                                                : "SIGN UP"),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => Intersets()),
+                                            );
+                                          },
+                                          child: Text(
+                                              state is RegisterLoadingState
+                                                  ? "Loading...."
+                                                  : "SIGN UP"),
+                                        ),
                                         color: theme.primaryColor,
                                         textColor:
                                             theme.colorScheme.onSecondary,
