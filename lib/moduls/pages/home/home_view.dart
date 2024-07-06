@@ -54,7 +54,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
         SizedBox(
-          height: 260,
+          height: 230,
           child: BlocProvider(
             create: (context) => CoursesCubit()..getCourses(),
             child: BlocBuilder<CoursesCubit, GetCoursesState>(
@@ -225,7 +225,7 @@ class _HomeViewState extends State<HomeView> {
           height: 5,
         ),
         SizedBox(
-          height: 90,
+          height: 180,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
@@ -296,11 +296,198 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ],
                 ),
-              ])
+                Row(
+                  children: [
+                    GestureDetector(
+                      child: const CategoryCard(
+                          categoryName: 'Marketing'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: const CategoryCard(categoryName: 'Design'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: const CategoryCard(categoryName: 'Photography & video'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: const CategoryCard(categoryName: 'Development'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: const CategoryCard(categoryName: 'Business'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CoursesView()),
+                        );
+                      },
+                    ),
+                    GestureDetector(
+                      child: const CategoryCard(
+                          categoryName: 'IT & Software'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CoursesView()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ]),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+
+        SizedBox(
+          height: 270,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              ReviewCard(
+                reviewText: 'student review and what he\n did in the course student\n review and what he did in the\n course student review and\n what he did in the course ',
+                personName: 'person name',
+                courseName: 'name of the course -\n year of the course',
+
+              ),
+              ReviewCard(
+                reviewText: 'student review and what he\n did in the course student\n review and what he did in the\n course student review and\n what he did in the course ',
+                personName: 'person name',
+                courseName: 'name of the course -\n year of the course',
+
+              ),
+              ReviewCard(
+                reviewText: 'student review and what he\n did in the course student\n review and what he did in the\n course student review and\n what he did in the course ',
+                personName: 'person name',
+                courseName: 'name of the course -\n year of the course',
+
+              ),
+              ReviewCard(
+                reviewText: 'student review and what he\n did in the course student\n review and what he did in the\n course student review and\n what he did in the course ',
+                personName: 'person name',
+                courseName: 'name of the course -\n year of the course',
+
+              ),
+              ReviewCard(
+                reviewText: 'student review and what he\n did in the course student\n review and what he did in the\n course student review and\n what he did in the course ',
+                personName: 'person name',
+                courseName: 'name of the course -\n year of the course',
+
+              ),
+              ReviewCard(
+                reviewText: 'student review and what he\n did in the course student\n review and what he did in the\n course student review and\n what he did in the course ',
+                personName: 'person name',
+                courseName: 'name of the course -\n year of the course',
+
+              ),
+
+
+
+
             ],
           ),
         )
+
       ]),
+    );
+  }
+}
+
+
+class ReviewCard extends StatelessWidget {
+  final String reviewText;
+  final String personName;
+  final String courseName;
+
+
+  ReviewCard({
+    required this.reviewText,
+    required this.personName,
+    required this.courseName,
+
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(Icons.format_quote, size: 24),
+            SizedBox(height: 8),
+            Text(
+              reviewText,
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(Icons.person_pin, size: 28),
+                SizedBox(width: 4),
+                Text(personName,
+                  style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            Row(
+              children: [
+                Icon(Icons.play_circle_outline, size: 28),
+                SizedBox(width: 4),
+                Text(courseName,
+                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ReviewsRow extends StatelessWidget {
+  final List<ReviewCard> reviews;
+
+  ReviewsRow({required this.reviews});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: reviews,
     );
   }
 }
