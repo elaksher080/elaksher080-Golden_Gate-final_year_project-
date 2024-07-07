@@ -54,7 +54,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
         SizedBox(
-          height: 230,
+          height: 260,
           child: BlocProvider(
             create: (context) => CoursesCubit()..getCourses(),
             child: BlocBuilder<CoursesCubit, GetCoursesState>(
@@ -225,7 +225,7 @@ class _HomeViewState extends State<HomeView> {
           height: 5,
         ),
         SizedBox(
-          height: 180,
+          height: 90,
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
@@ -296,196 +296,11 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    GestureDetector(
-                      child: const CategoryCard(
-                          categoryName: 'Marketing'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CoursesView()),
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const CategoryCard(categoryName: 'Design'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CoursesView()),
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const CategoryCard(categoryName: 'Photography & video'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CoursesView()),
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const CategoryCard(categoryName: 'Development'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CoursesView()),
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const CategoryCard(categoryName: 'Business'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CoursesView()),
-                        );
-                      },
-                    ),
-                    GestureDetector(
-                      child: const CategoryCard(
-                          categoryName: 'IT & Software'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const CoursesView()),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ]),
+              ])
             ],
           ),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-
-        SizedBox(
-          height: 300,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-
-              ReviewCard(
-                reviewText: 'A good robotics course should provide\n opportunities for hands-on learning.\n',
-                personName: 'Mohamed Ahmed ',
-                courseName: 'the complete Javascript course -\n 2024',
-                image: Image.asset("assets/persons/baraka.jpg", width: 60, height: 60),
-              ),
-              ReviewCard(
-                reviewText: 'A good course should cover the process of\ndeploying apps to the Google Play Store.\n',
-                personName: 'Mennaatullah',
-                courseName: 'the utimate react course -\n2024',
-                image: Image.asset("assets/persons/menna.jpg", width: 60, height: 60),
-              ),
-              ReviewCard(
-                reviewText: 'I would highly recommend this AI\ncourse to anyone interested in delving\ninto artificial intelligence ',
-                personName: 'Moamen ElAksher',
-                courseName: 'Flutter&Dart (The Complete Guide) -\n2024',
-                image: Image.asset("assets/persons/moamen.jpg", width: 60, height: 60),
-              ),
-              ReviewCard(
-                reviewText: 'It provided a solid foundation in HTML coding\n and practical skills essential for\n creating professional-quality.',
-                personName: 'Moutaz Mahmoud',
-                courseName: 'Machine Learning A-Z course -\n 2024',
-                image: Image.asset("assets/persons/moutaz.jpg", width: 60, height: 60),
-              ),
-              ReviewCard(
-                reviewText: 'a good network course should\nequip you with both theoretical\nknowledge and practical skills',
-                personName: 'Nada Khaled',
-                courseName: 'the complete Javascript course -\n2024',
-                image: Image.asset("assets/persons/nada.jpg", width: 60, height: 60),
-              ),
-              ReviewCard(
-                reviewText: 'A good management course should\nprovide you with the knowledge\n',
-                personName: 'Nesma Hossam',
-                courseName: 'NodeJS Tutorial and Projects Course -\n2024',
-                image: Image.asset("assets/persons/nesma.jpg", width: 60, height: 60),
-              ),
-              ReviewCard(
-                reviewText: 'The data analysis course provided a\nsolid foundation in essential concepts\n and practical techniques.',
-                personName: 'Mohamed Salah',
-                courseName: 'Complete Web & Mobile Designer: UI/UX, Figma -\n2024',
-                image: Image.asset("assets/persons/salah.jpg", width: 60, height: 60),
-              ),
-              ReviewCard(
-                reviewText: 'The course materials were well-structured,\nand the instructors were knowledgeable \nand supportive.',
-                personName: 'Tassnem Mohamed',
-                courseName: 'Complete Web & Mobile Designer: UI/UX, Figma -\n2024',
-                image: Image.asset("assets/persons/tassnem.jpg", width: 60, height: 60),
-              ),
-            ],
-          ),
-        ),
-
+        )
       ]),
-    );
-  }
-}
-class ReviewCard extends StatelessWidget {
-  final String reviewText;
-  final String personName;
-  final String courseName;
-  final Image image;
-
-  ReviewCard({
-    required this.reviewText,
-    required this.personName,
-    required this.courseName,
-    required this.image,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(Icons.format_quote, size: 24),
-            SizedBox(height: 8),
-            Text(
-              reviewText,
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 8),
-            Row(
-              children: [
-                ClipOval(
-                  child: image,
-                ),
-                SizedBox(width: 4),
-                Text(
-                  personName,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(height: 15),
-            Row(
-              children: [
-                Icon(Icons.play_circle_outline, size: 28),
-                SizedBox(width: 4),
-                Text(
-                  courseName,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
